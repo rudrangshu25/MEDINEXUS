@@ -3,6 +3,10 @@ import cors from "cors"
 import { connectDB } from "./config/db.js"
 import userRouter from "./routes/userRoute.js"
 import 'dotenv/config.js'
+import hospitalRoute from "./routes/hospitalRoute.js"
+import medicroutes from "./routes/medicRoutes.js"
+import hospitaldoctorRoute from "./routes/hospitaldoctorRoute.js"
+
 
 
 
@@ -19,6 +23,9 @@ connectDB();
 
 
 app.use("/api/user", userRouter)
+app.use("/api/hospital_doctor", hospitaldoctorRoute)
+app.use("/api/medicine", medicroutes)
+app.use("/api/hospital", hospitalRoute)
 app.use("/images",express.static('uploads'))
 
 
