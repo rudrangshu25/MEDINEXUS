@@ -6,12 +6,13 @@ import Home from './pages/Home/Home.jsx'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
+  const loggedIn=window.localStorage.getItem("isLoggedIn")
   return <>
     {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
     <div>
-      <Navbar setShowLogin={setShowLogin} />
+      <Navbar setShowLogin={setShowLogin} loggedIn />
       <Routes>
-        <Route path='/' element={<Home/> } />
+        <Route path='/' element={<Home loggedIn/> } />
       </Routes>
     </div>
     
