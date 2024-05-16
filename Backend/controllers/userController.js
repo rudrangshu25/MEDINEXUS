@@ -31,6 +31,7 @@ const createTokens = (id) => {
 
 
 const registerUser = async (req, res) => {
+    let image_filename = `${req.file.filename}`;
     const { name, password, email , address,age,gender } = req.body;
     try {
         const exist = await userModel.findOne({ email });
@@ -54,7 +55,8 @@ const registerUser = async (req, res) => {
             email: email,
             address: address,
             age: age,
-            gender:gender,
+            gender: gender,
+            image:image_filename,
             password: hashespassword
         })
 
@@ -68,5 +70,24 @@ const registerUser = async (req, res) => {
         res.json({success: false, message:"Error"})
     }
 }
+const listUser = async (req, res) => {
+    try {
+        const Data = await userModel.find({});
+        res.json({success:true,data:Data})
+    } catch (error) {
+        console.log(error); 
+        res.json({success:false,messgae:"Error"})
+    }
+}
+const getUser = async (req, res) => {
+    try {
+        let userData = await userModel.findOne({ _id: req.body.userId });
+        var emailData = await userData.email;
+        res.json({ success: true, emailData}); 
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
 
-export {loginUser, registerUser}
+export {loginUser, registerUser,listUser,getUser}

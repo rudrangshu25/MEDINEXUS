@@ -35,16 +35,15 @@ const StoreContextProvider = (props) => {
     //     setCartItems(response.data.cartData);
     // }
 
-    // useEffect(() => {
-    //     async function loadData() {
-    //         await fetchFoodList();
-    //         if (localStorage.getItem("token")) {
-    //             setToken(localStorage.getItem("token"));
-    //             await loadCartData(localStorage.getItem("token"));
-    //         }
-    //     }
-    //     loadData();
-    // },[])
+    useEffect(() => {
+        async function loadData() {
+            await fetchFoodList();
+            if (localStorage.getItem("token")) {
+                setToken(localStorage.getItem("token"));
+            }
+        }
+        loadData();
+    },[])
 
 
     const contextValue = {
@@ -54,7 +53,7 @@ const StoreContextProvider = (props) => {
         // removeFromCart,
         url,
         token,
-        setToken
+        setToken,
     }
 
     return (

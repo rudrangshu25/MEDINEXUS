@@ -1,0 +1,15 @@
+.headname{
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 30px;
+    text-decoration: underline dotted;
+    display: flex;
+}
+
+.headname img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right:20px ;
+}
